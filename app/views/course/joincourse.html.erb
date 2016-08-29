@@ -1,0 +1,16 @@
+<h1>현재 접속 상태</h1>
+<br>
+	시작점 : <%= @selectedroute.startpoint %> <br>
+	도착점 : <%= @selectedroute.endpoint %> <br>
+	출발시간 : <%= @selectedroute.enrolltime.to_s[0,16] %> <br>
+	등록 유저 수 : <%= @selectedroute.users.count %> <br>
+	성별 옵션 : <%= @selectedroute.genderonly %>
+
+<br>
+<h1>현재 접속자 명단..</h1>
+<% @selectedroute.users.each do |user| %>
+	<%= user.email %> <br>
+<% end %>
+
+<br>
+<h1>카카오톡 오픈링크..</h1>

@@ -1,0 +1,2 @@
+json.extract! taxicourse, :id, :startpoint, :endpoint, :enrolltime, :genderonly, :user_id, :history, :chatlink, :descript1, :descript2, :randstr, :created_at, :updated_at
+json.url taxicourse_url(taxicourse, format: :json)

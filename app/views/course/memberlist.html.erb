@@ -1,0 +1,72 @@
+
+<br>-------------------<br>
+<h1>동일코스 근처의 시간대..</h1>
+
+<% @rangecourse.each do |course| %>
+	<%= course.startpoint %> / 
+	<%= course.endpoint %> / 
+	<%= course.enrolltime.to_s[0,16] %>
+	<%= link_to "접속하기"%>
+	<br>
+<% end %>
+
+<br>
+현재 TID: <%= current_user.taxicourse_id %>
+<br>
+
+
+<h1>선택한 시간대</h1>
+<%=	Time.new(params[:enrolltime]["enrolltime_time(1i)"].to_i, params[:enrolltime]["enrolltime_time(2i)"].to_i, params[:enrolltime]["enrolltime_time(3i)"].to_i, params[:enrolltime]["enrolltime_time(4i)"].to_i, params[:enrolltime]["enrolltime_time(5i)"].to_i).strftime("%m월 %d일 %H시 %M분") %>
+<br>
+<% if !@existingcheck %>
+	해당시간대는 존재하므로 위 리스트로 접속.
+<% else %>
+	<p>해당시간대와 동일 코스가 존재하지 않으므로 코스만들기 필요</p>
+
+	<%= form_for(@taxicourse, url: {action: "createcourse"}) do |f| %>
+	  <% if @taxicourse.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@taxicourse.errors.count, "error") %> prohibited this taxicourse from being saved:</h2>
+
+	      <ul>
+	      <% @taxicourse.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+
+
+	    <%= f.hidden_field :startpoint, value: params[:startingpoint] %>
+	    <%= f.hidden_field :endpoint, value: params[:endingpoint] %>
+	    <%= f.hidden_field :enrolltime, value: @senttime %>
+	  <div class="field"><br>
+	    <%= f.number_field :genderonly %>
+	  </div>
+
+	  <div class="actions">
+	    <%= f.submit '코스 만들기', :class => 'submit_class_name_here' %>
+	  </div>
+	<% end %>	
+
+<% end %>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

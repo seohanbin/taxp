@@ -1,0 +1,53 @@
+<%= form_for(@taxicourse) do |f| %>
+  <% if @taxicourse.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@taxicourse.errors.count, "error") %> prohibited this taxicourse from being saved:</h2>
+
+      <ul>
+      <% @taxicourse.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :startpoint %><br>
+    <%= f.text_field :startpoint %>
+  </div>
+  <div class="field">
+    <%= f.label :endpoint %><br>
+    <%= f.text_field :endpoint %>
+  </div>
+  <div class="field">
+    <%= f.label :enrolltime %><br>
+    <%= f.datetime_select :enrolltime %>
+  </div>
+  <div class="field">
+    <%= f.label :genderonly %><br>
+    <%= f.number_field :genderonly %>
+  </div>
+  <div class="field">
+    <%= f.label :history %><br>
+    <%= f.text_area :history %>
+  </div>
+  <div class="field">
+    <%= f.label :chatlink %><br>
+    <%= f.text_field :chatlink %>
+  </div>
+  <div class="field">
+    <%= f.label :descript1 %><br>
+    <%= f.text_area :descript1 %>
+  </div>
+  <div class="field">
+    <%= f.label :descript2 %><br>
+    <%= f.text_area :descript2 %>
+  </div>
+  <div class="field">
+    <%= f.label :randstr %><br>
+    <%= f.text_field :randstr %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

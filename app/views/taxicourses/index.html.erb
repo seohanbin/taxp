@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Taxicourses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Startpoint</th>
+      <th>Endpoint</th>
+      <th>Enrolltime</th>
+      <th>Genderonly</th>
+      <th>History</th>
+      <th>Chatlink</th>
+      <th>Descript1</th>
+      <th>Descript2</th>
+      <th>Randstr</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @taxicourses.each do |taxicourse| %>
+      <tr>
+        <td><%= taxicourse.startpoint %></td>
+        <td><%= taxicourse.endpoint %></td>
+        <td><%= taxicourse.enrolltime %></td>
+        <td><%= taxicourse.genderonly %></td>
+        <td><%= taxicourse.history %></td>
+        <td><%= taxicourse.chatlink %></td>
+        <td><%= taxicourse.descript1 %></td>
+        <td><%= taxicourse.descript2 %></td>
+        <td><%= taxicourse.randstr %></td>
+        <td><%= link_to 'Show', taxicourse %></td>
+        <td><%= link_to 'Edit', edit_taxicourse_path(taxicourse) %></td>
+        <td><%= link_to 'Destroy', taxicourse, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Taxicourse', new_taxicourse_path %>

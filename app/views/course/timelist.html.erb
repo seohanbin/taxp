@@ -1,0 +1,14 @@
+<%= form_tag({controller: "course", action: "memberlist"}, method: "get", class: "") do %>
+
+	<input type="hidden" name="startingpoint" value="<%= params[:startingpoint]%>" >
+	<input type="hidden" name="endingpoint" value="<%= params[:endingpoint]%>" >
+
+	시간대를 고르세요
+
+	<br>
+	<%= time_select 'enrolltime', 'enrolltime_time', {minute_step: 15, :default => {:hour => (Time.now ).hour, :minute => '00'}} %>
+	<br>
+
+	<br>
+	<%= submit_tag '시간선택완료.', :class => 'submit_class_name_here' %>
+<% end %>

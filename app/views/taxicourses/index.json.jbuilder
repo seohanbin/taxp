@@ -1,0 +1,1 @@
+json.array! @taxicourses, partial: 'taxicourses/taxicourse', as: :taxicourse
