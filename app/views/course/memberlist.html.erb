@@ -1,5 +1,6 @@
-
-<h1> 이미 존재하는 동일코스 리스트</h1>
+<h1>코스 접속</h1>
+<br>
+<h4> 이미 존재하는 동일코스 리스트</h4>
 
 <% @rangecourse.each do |course| %>
 	방 ID: <%= course.id %>
@@ -15,43 +16,55 @@
 
 
 <br>
-<h1>선택한 코스</h1>
+<div class="well">
+<h4>선택한 코스</h4>
 현재 접속된 방 ID : <%=current_user.taxicourse_id ? current_user.taxicourse_id : "접속된 방 없음" %>
 <br>
 <p> 시작점:  <%= params[:startingpoint] %> </p>
 <p> 도착점:  <%= params[:endingpoint] %> </p>
 
-<h1>선택한 시간대</h1>
+<h4>선택한 시간대</h4>
 <%=	Time.new(params[:enrolltime]["enrolltime_time(1i)"].to_i, params[:enrolltime]["enrolltime_time(2i)"].to_i, params[:enrolltime]["enrolltime_time(3i)"].to_i, params[:enrolltime]["enrolltime_time(4i)"].to_i, params[:enrolltime]["enrolltime_time(5i)"].to_i).strftime("%m월 %d일 %H시 %M분") %>
 <br>
-<% if !@existingcheck %>
-	해당시간대는 존재하므로 위 리스트로 접속.
-<% else %>
 
-	<%= form_for(@taxicourse, url: {action: "createcourse"}) do |f| %>
-	  <% if @taxicourse.errors.any? %>
-	    <div id="error_explanation">
-	      <h2><%= pluralize(@taxicourse.errors.count, "error") %> prohibited this taxicourse from being saved:</h2>
+	<% if !@existingcheck %>
+		해당시간대는 존재하므로 위 리스트로 접속.
+	<% else %>
 
-	      <ul>
-	      <% @taxicourse.errors.full_messages.each do |message| %>
-	        <li><%= message %></li>
-	      <% end %>
-	      </ul>
-	    </div>
-	  <% end %>
+		<%= form_for(@taxicourse, url: {action: "createcourse"}) do |f| %>
+		  <% if @taxicourse.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@taxicourse.errors.count, "error") %> prohibited this taxicourse from being saved:</h2>
 
-
-	    <%= f.hidden_field :startpoint, value: params[:startingpoint] %>
-	    <%= f.hidden_field :endpoint, value: params[:endingpoint] %>
-	    <%= f.hidden_field :enrolltime, value: @senttime %>
-
-	    <%#= f.number_field :genderonly %>
+		      <ul>
+		      <% @taxicourse.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
 
 
-	  <div class="actions">
-	    <%= f.submit '코스 만들기',class: "btn btn-primary" %>
-	  </div>
+		    <%= f.hidden_field :startpoint, value: params[:startingpoint] %>
+		    <%= f.hidden_field :endpoint, value: params[:endingpoint] %>
+		    <%= f.hidden_field :enrolltime, value: @senttime %>
+
+		    <%#= f.number_field :genderonly %>
+
+
+		  <div class="actions">
+		    <%= f.submit '코스 만들기',class: "btn btn-primary" %>
+		  </div>
+		<% end %>
+
 	<% end %>
-
-<% end %>
+</div>
+<div class="well">
+	<h4>현재 진행 단계</h4>
+	<div class="list-group">
+		<a  class="list-group-item">경로찾기</a>
+		<a  class="list-group-item">시간대 선택</a>
+		<a  class="list-group-item active">코스 접속</a>
+		<a  class="list-group-item">탑승 인원 확인</a>
+	</div>
+</div>

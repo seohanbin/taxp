@@ -1,7 +1,5 @@
-<br>
-<br>
 
-
+<h2>경로 찾기</h2>
 <%= form_tag({controller: "course", action: "timelist"}, method: "get", class: "") do %>
 	<%= select_tag 'startingpoint', options_for_select(@routepoint), {:include_blank => "시작점을 고르세요", class:"form-control"}%>
 	<br>
@@ -9,3 +7,14 @@
 	<br>
 	<%= submit_tag '시간대 찾기' ,class: "btn btn-default" %>
 <% end %>
+<br>
+
+<div class="well">
+	<h4>현재 진행 단계</h4>
+	<div class="list-group">
+		<a  class="list-group-item active">경로찾기</a>
+		<a  class="list-group-item">시간대 선택</a>
+		<a  class="list-group-item">코스 접속</a>
+		<a  class="list-group-item">탑승 인원 확인</a>
+	</div>
+</div>

@@ -1,6 +1,16 @@
-<h1>원광대학교 택시 모아타기</h1>
 
-<%= link_to '경로 찾기', course_courselist_path, class: "btn btn-primary btn-lg active", role: "button" %>
+<div class="jumbotron">
+  <h1>Takpa</h1>
+  <p>원광대학교 학생들의 택시경로를 모아서 갈수있게 해주는 서비스 입니다.</p>
+  <p><%= link_to '경로 찾기', course_courselist_path, class: "btn btn-primary btn-lg active", role: "button" %></p>
 
-<h2>이용방법</h2>
-<p>경로선택 > 시간대선택 > 탑승인원확인</p>
+  <h2>*이용방법</h2>
+  <div class="list-group">
+    <a  class="list-group-item">경로찾기</a>
+    <a  class="list-group-item">시간대 선택</a>
+    <a  class="list-group-item">코스 접속</a>
+    <a  class="list-group-item">탑승 인원 확인</a>
+  </div>
+  <%= image_tag("http://www.taxifarefinder.com/newsroom/wp-content/uploads/2013/07/taxipeople.jpg", :alt => "taxi jpg",class: "img-responsive img-rounded") %>
+
+</div>
