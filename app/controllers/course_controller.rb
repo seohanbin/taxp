@@ -1,4 +1,5 @@
 class CourseController < ApplicationController
+	before_action :authenticate_user!
 	before_action :set_variables
 
   def courselist
@@ -38,7 +39,7 @@ class CourseController < ApplicationController
     @taxicourse.save
     redirect_to action: 'joincourse', id: @taxicourse, flash: {notice: "경로가 생성되었습니다."}
 
-  	
+
   end
 
   def joincourse
@@ -59,7 +60,7 @@ class CourseController < ApplicationController
   end
   def taxicourse_params
     params.require(:taxicourse).permit(:startpoint, :endpoint, :enrolltime, :genderonly, :history, :chatlink, :descript1, :descript2, :randstr)
-  end 
+  end
 
 
 

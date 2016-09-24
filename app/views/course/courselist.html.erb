@@ -3,10 +3,9 @@
 
 
 <%= form_tag({controller: "course", action: "timelist"}, method: "get", class: "") do %>
-	<%= select_tag 'startingpoint', options_for_select(@routepoint), {:include_blank => "시작점을 고르세요"} %>
+	<%= select_tag 'startingpoint', options_for_select(@routepoint), {:include_blank => "시작점을 고르세요", class:"form-control"}%>
 	<br>
-	<%= select_tag 'endingpoint', options_for_select(@routepoint), {:include_blank => "도착점을 고르세요"} %>
+	<%= select_tag 'endingpoint', options_for_select(@routepoint), {:include_blank => "도착점을 고르세요", class:"form-control"}%>
 	<br>
-	<%= submit_tag '시간대 찾기', :class => 'submit_class_name_here' %>
+	<%= submit_tag '시간대 찾기' ,class: "btn btn-default" %>
 <% end %>
-
